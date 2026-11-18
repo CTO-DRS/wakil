@@ -1,0 +1,5 @@
+# إحصاءات اللغة على صفحة المستودع: الأرشيف والحزم الجاهزة لا تُحتسب ككود المشروع،
+# فتظهر Kotlin وC كم اللغتين الفعليتين بدل TypeScript الموروثة من الأرشيف.
+archive/** linguist-vendored
+app/libs/** linguist-vendored
+app/src/main/jniLibs/** linguist-vendored

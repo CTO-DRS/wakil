@@ -1,0 +1,15 @@
+Copyright (c) 2026 DRS AI (CTO-DRS)
+
+جميع الحقوق محفوظة / All rights reserved.
+
+هذا المشروع برمجيات ملكية خاصة، ولا يُمنح أي حق في النسخ أو التوزيع أو
+التعديل أو الاستخدام التجاري دون إذن كتابي مسبق من المالك.
+
+مكوّنات الطرف الثالث تحتفظ بتراخيصها الأصلية: llama.cpp وONNX Runtime
+وشerpa-onnx وtesseract بتراخيصها المفتوحة كما وردت داخل المستودع، وتراخيص
+الخطوط (OFL) في app/src/main/assets/licenses/، وكود DRS-AI-Assistant داخل
+archive/ يبقى GPL-3.0 بترخيصه المنفصل ومرجعاً لا يُبنى من هذا المستودع.
+
+This is proprietary software. No license is granted to copy, distribute,
+modify, or use it commercially without prior written permission from the
+owner. Third-party components keep their original licenses.

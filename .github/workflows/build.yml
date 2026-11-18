@@ -87,7 +87,9 @@ jobs:
             } >> "$GITHUB_ENV"
             echo "Release signing: keystore decoded from secrets."
           else
-            echo "Release signing secrets missing - falling back to debug key."
+            echo "Release signing secrets missing (WAKIL_KEYSTORE_BASE64 / WAKIL_KEYSTORE_PASSWORD / WAKIL_KEY_ALIAS / WAKIL_KEY_PASSWORD)."
+            echo "Refusing to publish a debug-signed release - set the WAKIL_* secrets first."
+            exit 1
           fi
 
       - name: Build release APK

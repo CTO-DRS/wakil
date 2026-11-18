@@ -5,3 +5,7 @@ local.properties
 third_party/
 *.iml
 .idea/
+
+# أسرار التوقيع — لا تُرفع أبداً (مفتاح wakil التجريبي الثابت في keystore/ مقصود ويبقى)
+keystore.properties
+*.jks
