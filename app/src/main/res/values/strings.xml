@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">وكيل</string>
+    <string name="widget_desc">اسأل وكيل من الشاشة الرئيسية بالكتابة أو بالصوت</string>
+    <string name="accessibility_label">وكيل - التحكم بالشاشة</string>
+    <string name="accessibility_desc">يسمح لوكيل بقراءة محتوى الشاشة والنقر والكتابة والتمرير نيابةً عنك عند طلبك فقط. Lets Wakil read the screen and tap/type/scroll when you ask it to.</string>
+    <string name="widget_robot_cd">وكيل</string>
+    <string name="widget_hint">اسأل وكيل…</string>
+    <string name="widget_mic_cd">تكلّم</string>
+</resources>

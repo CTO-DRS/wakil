@@ -1,0 +1,147 @@
+{
+  "expo": {
+    "name": "Rafeeq AI",
+    "slug": "rafeeq-ai",
+    "scheme": "rafeeq",
+    "version": "0.23.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#05060A",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#05060A"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.drsai.rafeeq"
+    },
+    "android": {
+      "package": "com.drsai.rafeeq",
+      "versionCode": 25,
+      "allowBackup": false,
+      "adaptiveIcon": {
+        "backgroundColor": "#7C3AED",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.READ_CONTACTS",
+        "android.permission.CALL_PHONE",
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR",
+        "com.android.alarm.permission.SET_ALARM",
+        "android.permission.ACCESS_NOTIFICATION_POLICY",
+        "android.permission.WRITE_SETTINGS"
+      ],
+      "blockedPermissions": [
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "extra": {
+      "supportsRTL": true,
+      "forcesRTL": false
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "root": "./src/app"
+        }
+      ],
+      "expo-sqlite",
+      [
+        "expo-localization",
+        {
+          "supportsRTL": true,
+          "supportedLocales": {
+            "android": [
+              "ar",
+              "en"
+            ],
+            "ios": [
+              "ar",
+              "en"
+            ]
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 26,
+            "buildArchs": [
+              "arm64-v8a"
+            ],
+            "enableProguardInReleaseBuilds": false,
+            "extraProguardRules": "-keep class com.rnllama.** { *; }\n-keep class com.rnwhisper.** { *; }\n-keep class com.imxiqi.rnliveaudiostream.** { *; }",
+            "useLegacyPackaging": false
+          }
+        }
+      ],
+      [
+        "llama.rn",
+        {
+          "enableEntitlements": false,
+          "forceCxx20": true,
+          "enableOpenCLAndHexagon": true
+        }
+      ],
+      "./plugins/withReleaseSigning",
+      "./plugins/withLauncherIcons",
+      [
+        "expo-font",
+        {
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "IBMPlexSansArabic",
+                "fontDefinitions": [
+                  {
+                    "path": "./assets/fonts/IBMPlexSansArabic-Regular.ttf",
+                    "weight": 400
+                  },
+                  {
+                    "path": "./assets/fonts/IBMPlexSansArabic-Medium.ttf",
+                    "weight": 500
+                  },
+                  {
+                    "path": "./assets/fonts/IBMPlexSansArabic-SemiBold.ttf",
+                    "weight": 600
+                  },
+                  {
+                    "path": "./assets/fonts/IBMPlexSansArabic-Bold.ttf",
+                    "weight": 700
+                  }
+                ]
+              }
+            ]
+          },
+          "ios": {
+            "fonts": [
+              "./assets/fonts/IBMPlexSansArabic-Regular.ttf",
+              "./assets/fonts/IBMPlexSansArabic-Medium.ttf",
+              "./assets/fonts/IBMPlexSansArabic-SemiBold.ttf",
+              "./assets/fonts/IBMPlexSansArabic-Bold.ttf"
+            ]
+          }
+        }
+      ],
+      "expo-sharing"
+    ],
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}

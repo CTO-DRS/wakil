@@ -1,0 +1,5 @@
+{
+  "appId": "@@PACKAGE@@",
+  "appName": "@@APP_NAME@@",
+  "webDir": "www"
+}

@@ -1,0 +1,57 @@
+name: Build APK (Web → Capacitor)
+on:
+  push:
+  workflow_dispatch:
+concurrency:
+  group: wakil-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  WEB_DIR: '@@WEB_DIR@@'
+  APP_NAME: '@@APP_NAME@@'
+  APP_ID: '@@PACKAGE@@'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install
+        run: |
+          [ -f package.json ] || npm init -y >/dev/null
+          npm install
+          if ! node -e "require.resolve('@capacitor/android/package.json')" 2>/dev/null; then
+            npm install @capacitor/core@7 @capacitor/android@7 && npm install -D @capacitor/cli@7
+          fi
+      - name: Build web
+        run: npm run build --if-present
+      - name: Capacitor Android project
+        run: |
+          WEB="$WEB_DIR"
+          if [ "$WEB" = "." ]; then
+            mkdir -p www
+            rsync -a --exclude node_modules --exclude android --exclude www --exclude '.*' --exclude 'package*.json' ./ www/
+            WEB=www
+          fi
+          if [ ! -f capacitor.config.json ] && [ ! -f capacitor.config.ts ] && [ ! -f capacitor.config.js ]; then
+            npx cap init "$APP_NAME" "$APP_ID" --web-dir "$WEB"
+          fi
+          [ -d android ] || npx cap add android
+          npx cap sync android
+      - name: Signing key (same key every build, so updates install in place)
+        run: |
+          mkdir -p ~/.android
+          if [ -f .wakil/debug.keystore.b64 ]; then base64 -d .wakil/debug.keystore.b64 > ~/.android/debug.keystore; fi
+      - name: Build APK
+        run: cd android && chmod +x gradlew && ./gradlew assembleDebug --no-daemon --stacktrace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: @@NPM_NAME@@-apk
+          path: android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Original DRS mark: a rounded speech bubble with a bold "D". Content kept inside the 66dp safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- bubble with tail at bottom-start -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,30 L70,30 Q80,30 80,40 L80,62 Q80,72 70,72 L50,72 L38,82 L40,72 L38,72 Q28,72 28,62 L28,40 Q28,30 38,30 Z" />
+    <!-- letter D -->
+    <path
+        android:fillColor="#0E5E4E"
+        android:fillType="evenOdd"
+        android:pathData="M44,39 L54,39 Q67,39 67,51 Q67,63 54,63 L44,63 Z M50,44.5 L50,57.5 L54,57.5 Q61,57.5 61,51 Q61,44.5 54,44.5 Z" />
+</vector>

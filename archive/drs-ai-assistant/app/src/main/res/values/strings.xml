@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">DRS AI</string>
+
+    <!-- Actions -->
+    <string name="action_new_chat">محادثة جديدة</string>
+    <string name="action_history">المحادثات</string>
+    <string name="action_settings">الإعدادات</string>
+    <string name="action_send">إرسال</string>
+    <string name="action_stop">إيقاف</string>
+    <string name="action_ok">تمام</string>
+    <string name="action_retry">حاول مرة ثانية</string>
+    <string name="action_back">رجوع</string>
+    <string name="action_delete">حذف</string>
+    <string name="action_cancel">إلغاء</string>
+
+    <!-- Chat -->
+    <string name="chat_greeting">هلا والله! أنا درس</string>
+    <string name="chat_greeting_sub">مساعدك الذكي، شغّال على جوالك بدون إنترنت. وش تبي نسوي اليوم؟</string>
+    <string name="chat_hint">اكتب رسالتك…</string>
+    <string name="chat_loading_model">جاري تجهيز النموذج…</string>
+    <string name="suggestion_1">ساعدني أكتب رسالة رسمية</string>
+    <string name="suggestion_2">لخّص لي فكرة بسيطة</string>
+    <string name="suggestion_3">اقترح لي خطة يومي</string>
+
+    <!-- Errors -->
+    <string name="error_title">صار خطأ</string>
+    <string name="error_storage">المساحة ما تكفي. تحتاج تقريبًا %1$s فاضية.</string>
+    <string name="error_network">تعذّر الاتصال. تأكد من الإنترنت وحاول مرة ثانية.</string>
+    <string name="error_checksum">الملف المحمّل غير سليم. بنحمّله من جديد.</string>
+    <string name="error_unknown">صار خطأ غير متوقع.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">أهلًا بك في درس</string>
+    <string name="onboarding_body">عشان يشتغل المساعد على جوالك بدون إنترنت، نحتاج نحمّل النموذج مرة وحدة بس.</string>
+    <string name="onboarding_privacy">محادثاتك تبقى على جوالك وما تطلع لأي مكان.</string>
+    <string name="onboarding_model_label">النموذج</string>
+    <string name="onboarding_model_size">الحجم: %1$s</string>
+    <string name="onboarding_model_license">الترخيص: %1$s</string>
+    <string name="onboarding_free_space">المساحة الفاضية: %1$s</string>
+    <string name="onboarding_download">ابدأ التحميل</string>
+    <string name="onboarding_progress">%1$s من %2$s (%3$d%%)</string>
+    <string name="onboarding_pause">إيقاف مؤقت</string>
+    <string name="onboarding_keep_open">يفضّل تخلي التطبيق مفتوح وتستخدم واي فاي أثناء التحميل.</string>
+    <string name="onboarding_paused">متوقف مؤقتًا: %1$s من %2$s</string>
+    <string name="onboarding_resume">كمّل التحميل</string>
+    <string name="onboarding_verifying">جاري التحقق من الملف…</string>
+    <string name="onboarding_done">جاهز! يلّا نبدأ</string>
+
+    <!-- History -->
+    <string name="history_title">المحادثات</string>
+    <string name="history_empty">ما فيه محادثات للحين</string>
+    <string name="history_empty_sub">ابدأ محادثة جديدة وبتلقاها هنا.</string>
+    <string name="history_untitled">محادثة بدون عنوان</string>
+    <string name="history_delete_title">حذف المحادثة؟</string>
+    <string name="history_delete_body">بتنحذف «%1$s» نهائيًا وما تقدر ترجّعها.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_temperature">درجة الإبداع</string>
+    <string name="settings_temperature_value">القيمة: %1$s</string>
+    <string name="settings_temperature_hint">قيمة أقل = ردود أدق وثابتة، وقيمة أعلى = ردود أكثر تنوعًا.</string>
+    <string name="settings_context">طول الذاكرة (السياق)</string>
+    <string name="settings_context_tokens">%1$d</string>
+    <string name="settings_context_hint">سياق أطول يتذكر محادثة أكثر لكنه يستهلك ذاكرة أكبر وقد يكون أبطأ.</string>
+    <string name="settings_model">النموذج</string>
+    <string name="settings_delete_model">حذف النموذج</string>
+    <string name="settings_delete_model_title">حذف النموذج؟</string>
+    <string name="settings_delete_model_body">بيتحرر تقريبًا %1$s من المساحة، وبتحتاج تحمّله من جديد عشان تستخدم هذا النموذج. محادثاتك ما راح تنحذف.</string>
+    <string name="settings_about">عن التطبيق</string>
+    <string name="settings_about_body">درس مساعد ذكي يشتغل بالكامل على جهازك. ما يرسل محادثاتك لأي خادم.</string>
+    <string name="settings_licenses">التراخيص مفتوحة المصدر</string>
+    <string name="license_llama_cpp">llama.cpp — ترخيص MIT\nحقوق النشر © مطورو ggml / llama.cpp</string>
+    <string name="license_qwen">Qwen2.5-1.5B-Instruct — ترخيص Apache-2.0\nحقوق النشر © فريق Qwen، Alibaba Cloud</string>
+
+    <!-- Models (v0.2) -->
+    <string name="onboarding_choose_model">اختر النموذج</string>
+    <string name="model_recommended">مُوصى به للعربية</string>
+    <string name="model_jais_desc">نموذج عربي من Inception، تحميله أصغر وأسرع على الجوال. يفكّر قبل ما يرد.</string>
+    <string name="model_qwen_desc">نموذج عام متعدد اللغات، أكبر حجمًا.</string>
+    <string name="settings_model_in_use">مستخدم حاليًا</string>
+    <string name="settings_model_downloaded">محمّل على الجهاز</string>
+    <string name="settings_model_not_downloaded">غير محمّل</string>
+    <string name="settings_model_use">استخدمه</string>
+    <string name="settings_model_download">تحميل</string>
+    <string name="chat_thinking">يفكّر…</string>
+    <string name="chat_reasoning_show">عرض طريقة التفكير</string>
+    <string name="chat_reasoning_hide">إخفاء طريقة التفكير</string>
+    <string name="license_jais">Jais-3-0.9B — ترخيص Apache-2.0
+حقوق النشر © Inception / IFM</string>
+    <!-- Voice (v0.3) -->
+    <string name="settings_voice">الصوت</string>
+    <string name="voice_name">صوت سعودي (Nabra Saudi 7M)</string>
+    <string name="voice_desc">يقرأ ردود درس بصوت سعودي، بدون إنترنت. يتحمّل مرة وحدة.</string>
+    <string name="voice_ready">جاهز على الجهاز</string>
+    <string name="voice_try">جرّب الصوت</string>
+    <string name="voice_sample_text">هلا والله! أنا درس، مساعدك الذكي. وش تبي نسوي اليوم؟</string>
+    <string name="voice_auto_read">قراءة الردود تلقائيًا</string>
+    <string name="voice_auto_read_hint">يقرأ كل جملة أول ما تخلص وهو يكتب الرد.</string>
+    <string name="voice_speed_value">سرعة الكلام: %1$s</string>
+    <string name="voice_delete_title">حذف الصوت؟</string>
+    <string name="voice_delete_body">بيتحرر تقريبًا %1$s من المساحة. تقدر تحمّله مرة ثانية من الإعدادات.</string>
+    <string name="voice_missing_title">الصوت غير محمّل</string>
+    <string name="voice_missing_body">عشان يقرأ درس الردود بصوت، حمّل الصوت السعودي من الإعدادات (حوالي ١٦ ميجابايت).</string>
+    <string name="voice_open_settings">افتح الإعدادات</string>
+    <string name="action_auto_read_on">تشغيل القراءة الصوتية</string>
+    <string name="action_auto_read_off">إيقاف القراءة الصوتية</string>
+    <string name="action_read_aloud">اقرأ الرسالة</string>
+    <string name="action_stop_reading">أوقف القراءة</string>
+    <string name="settings_version">الإصدار %1$s</string>
+
+    <!-- Licenses -->
+    <string name="licenses_title">التراخيص</string>
+    <string name="licenses_app_body">درس برنامج حر ومفتوح المصدر بترخيص GNU GPL الإصدار 3 أو أحدث. تقدر تستخدمه وتعدّله وتعيد نشره بنفس الترخيص. يأتي بدون أي ضمان.</string>
+    <string name="licenses_third_party">مكوّنات من أطراف أخرى</string>
+    <string name="licenses_models_note">نماذج اللغة والصوت ما تنضمّن داخل التطبيق؛ تتحمّل عند الطلب ويتم التحقق منها ببصمة SHA-256.</string>
+</resources>

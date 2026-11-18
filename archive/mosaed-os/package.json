@@ -1,0 +1,24 @@
+{
+  "name": "mosaed-os",
+  "version": "1.2.0",
+  "private": true,
+  "description": "مساعد OS — مساعد ذكي باللغة العربية (Capacitor 8 + حزمة الأندرويد في apps/mosaed-os/android)",
+  "scripts": {
+    "sync": "cap sync android",
+    "open:android": "cap open android",
+    "build:web": "echo ضع مخرجات حزمة الويب في مجلد www/ ثم شغّل npm run sync",
+    "build:apk": "npm run sync && cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "~8.6.2",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "~8.6.2",
+    "@capacitor/haptics": "8.0.2",
+    "@capacitor/push-notifications": "8.1.3",
+    "@capacitor/splash-screen": "8.0.2",
+    "@capacitor/status-bar": "8.0.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "~8.6.2"
+  }
+}

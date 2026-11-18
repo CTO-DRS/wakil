@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>مساعد OS</title>
+  <style>
+    :root {
+      --bg: #0b1220; --card: #121b2e; --line: #22304d;
+      --fg: #e8eefc; --muted: #9fb0cd; --accent: #4f8cff; --accent2: #22c58b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Tahoma, "Noto Sans Arabic", sans-serif;
+      background: var(--bg); color: var(--fg);
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: clamp(1rem, 4vw, 3rem);
+    }
+    main {
+      max-width: 720px; width: 100%;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 18px; padding: clamp(1.25rem, 5vw, 2.5rem);
+      text-align: center;
+    }
+    .logo {
+      width: clamp(64px, 18vw, 96px); height: clamp(64px, 18vw, 96px);
+      margin: 0 auto 1rem; border-radius: 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(1.75rem, 6vw, 2.5rem); font-weight: 800;
+    }
+    h1 { font-size: clamp(1.5rem, 5vw, 2.25rem); margin-bottom: .5rem; }
+    p { color: var(--muted); font-size: clamp(.95rem, 3vw, 1.05rem); line-height: 1.9; }
+    code {
+      direction: ltr; display: inline-block; background: #0d1526;
+      border: 1px solid var(--line); border-radius: 8px;
+      padding: .15rem .5rem; font-size: .95em; color: #a9c6ff;
+    }
+    ul { list-style: none; margin-top: 1.25rem; }
+    li { color: var(--muted); padding: .4rem 0; border-top: 1px dashed var(--line); }
+    li b { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="logo">OS</div>
+    <h1>مساعد OS</h1>
+    <p>هذه حزمة الويب الافتراضية لتطبيق <b>مساعد OS</b> داخل مشروع
+      <b>DRS AI Suite</b>. حزمة الويب الأصلية (Next.js/Capacitor) غير مضمّنة في مستودعات
+      الأندرويد المدمجة، لذا ضع مخرجات واجهة الويب الخاصة بك في هذا المجلد
+      (<code>www/</code>) ثم زامن الحزمة.</p>
+    <ul>
+      <li><b>1.</b> انسخ مخرجات الواجهة إلى <code>apps/mosaed-os/www/</code></li>
+      <li><b>2.</b> شغّل <code>npm run sync</code> من <code>apps/mosaed-os/</code></li>
+      <li><b>3.</b> ابنِ الحزمة: <code>npm run build:apk</code></li>
+    </ul>
+  </main>
+</body>
+</html>

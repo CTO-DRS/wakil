@@ -1,0 +1,149 @@
+#!/bin/sh
+# wakil-apk — build Android apps (Java) inside Wakil's Alpine environment.
+#   wakil-apk setup              install the toolchain (once, ~450 MB)
+#   wakil-apk new <Name> [pkg]   create a project in ~/apps/<Name>
+#   wakil-apk build [dir]        build + sign; prints the APK path
+#   wakil-apk list               list your projects
+set -e
+T=/opt/android
+SDK_JAR=$T/android.jar
+D8=$T/d8.jar
+SIGNER=$T/apksigner.jar
+KS=$T/debug.keystore
+APPS=/root/apps
+E=https://dl-cdn.alpinelinux.org/alpine/edge
+BT_URL=https://dl.google.com/android/repository/build-tools_r35_linux.zip
+PF_URL=https://dl.google.com/android/repository/platform-35_r02.zip
+
+say() { printf '\033[36m[wakil-apk]\033[0m %s\n' "$*"; }
+die() { printf '\033[31m[wakil-apk] خطأ:\033[0m %s\n' "$*"; exit 1; }
+
+ready() { [ -f "$SDK_JAR" ] && [ -f "$D8" ] && [ -f "$SIGNER" ] && command -v aapt2 >/dev/null && command -v javac >/dev/null; }
+
+setup() {
+  mkdir -p $T
+  say "1/4 تثبيت Java و zip…"
+  apk add -q openjdk17-jdk zip unzip curl
+  say "2/4 تثبيت aapt2 و zipalign…"
+  apk add -q -X $E/testing -X $E/community -X $E/main android-build-tools
+  if [ ! -f "$D8" ] || [ ! -f "$SIGNER" ]; then
+    say "3/4 تنزيل d8 و apksigner (≈60 MB)…"
+    curl -fL --retry 3 -o /tmp/bt.zip "$BT_URL"
+    unzip -o -j -q /tmp/bt.zip 'android-*/lib/d8.jar' 'android-*/lib/apksigner.jar' -d $T
+    rm -f /tmp/bt.zip
+  fi
+  if [ ! -f "$SDK_JAR" ]; then
+    say "4/4 تنزيل android.jar (≈65 MB)…"
+    curl -fL --retry 3 -o /tmp/pf.zip "$PF_URL"
+    unzip -o -j -q /tmp/pf.zip 'android-*/android.jar' -d $T
+    rm -f /tmp/pf.zip
+  fi
+  [ -f "$KS" ] || keytool -genkeypair -keystore "$KS" -storepass android -keypass android -alias wakil \
+      -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Wakil Apps" >/dev/null 2>&1
+  ready && say "الأدوات جاهزة ✓  جرّب: wakil-apk new Hello" || die "لم يكتمل التثبيت"
+}
+
+new() {
+  NAME="$1"; [ -n "$NAME" ] || die "اكتب اسم التطبيق: wakil-apk new Hello"
+  CLEAN=$(echo "$NAME" | tr -cd 'A-Za-z0-9')
+  [ -n "$CLEAN" ] || die "استخدم حروفاً إنجليزية في اسم المشروع"
+  PKG="${2:-com.wakil.$(echo "$CLEAN" | tr 'A-Z' 'a-z')}"
+  D=$APPS/$CLEAN
+  [ -e "$D" ] && die "المشروع موجود: $D"
+  SRC=$D/src/$(echo "$PKG" | tr . /)
+  mkdir -p "$SRC" $D/res/layout $D/res/values
+  cat > $D/AndroidManifest.xml <<X
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="$PKG" android:versionCode="1" android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34" />
+    <application android:label="@string/app_name" android:theme="@android:style/Theme.Material.NoActionBar">
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
+X
+  cat > $D/res/values/strings.xml <<X
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">$NAME</string>
+</resources>
+X
+  cat > $D/res/layout/main.xml <<'X'
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:gravity="center" android:background="#05080F" android:padding="24dp">
+    <TextView android:id="@+id/title" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="مرحباً من وكيل 🤖" android:textColor="#00E5FF" android:textSize="28sp" />
+    <Button android:id="@+id/button" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="24dp" android:text="اضغطني" />
+</LinearLayout>
+X
+  cat > $SRC/MainActivity.java <<X
+package $PKG;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+    private int count = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        TextView title = findViewById(R.id.title);
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(v -> title.setText("ضغطت " + (++count) + " مرة"));
+    }
+}
+X
+  say "تم إنشاء $D"
+  say "عدّل الملفات ثم: wakil-apk build $D"
+}
+
+build() {
+  ready || die "الأدوات غير مثبتة. شغّل أولاً: wakil-apk setup"
+  D="${1:-$PWD}"; D=$(cd "$D" && pwd)
+  [ -f "$D/AndroidManifest.xml" ] || die "لا يوجد AndroidManifest.xml في $D"
+  NAME=$(basename "$D")
+  B=$D/build; rm -rf "$B"; mkdir -p $B/gen $B/obj $B/dex $B/res
+  say "1/5 الموارد…"
+  aapt2 compile --dir "$D/res" -o $B/res.zip
+  aapt2 link -I "$SDK_JAR" --manifest "$D/AndroidManifest.xml" -o $B/base.apk --java $B/gen \
+      --auto-add-overlay $( [ -d "$D/assets" ] && echo "-A $D/assets" ) $B/res.zip
+  say "2/5 ترجمة Java…"
+  find "$D/src" $B/gen -name '*.java' > $B/sources.txt
+  CP="$SDK_JAR"; [ -d "$D/libs" ] && for j in "$D"/libs/*.jar; do [ -f "$j" ] && CP="$CP:$j"; done
+  javac -encoding UTF-8 --release 11 -nowarn -classpath "$CP" -d $B/obj @$B/sources.txt
+  say "3/5 تحويل إلى DEX…"
+  LIBS=""; [ -d "$D/libs" ] && LIBS=$(ls "$D"/libs/*.jar 2>/dev/null || true)
+  java -Xmx1g -cp "$D8" com.android.tools.r8.D8 --release --min-api 26 --lib "$SDK_JAR" --output $B/dex \
+      $(find $B/obj -name '*.class') $LIBS
+  say "4/5 التجميع…"
+  cp $B/base.apk $B/unsigned.apk
+  (cd $B/dex && zip -q -j ../unsigned.apk classes*.dex)
+  zipalign -f 4 $B/unsigned.apk $B/aligned.apk
+  say "5/5 التوقيع…"
+  OUT=$D/$NAME.apk
+  java -jar "$SIGNER" sign --ks "$KS" --ks-pass pass:android --ks-key-alias wakil --out "$OUT" $B/aligned.apk
+  rm -f "$OUT.idsig"
+  say "تم ✓  $OUT ($(du -h "$OUT" | cut -f1))"
+  # Wakil watches for this line and shows an Install button.
+  printf '\001WAKIL_APK:%s\n' "$OUT"
+}
+
+case "$1" in
+  setup) setup ;;
+  new) shift; new "$@" ;;
+  build) shift; build "$@" ;;
+  list) ls -1 $APPS 2>/dev/null || echo "لا توجد مشاريع بعد" ;;
+  *) sed -n '2,7p' "$0" | sed 's/^# \{0,1\}//' ;;
+esac

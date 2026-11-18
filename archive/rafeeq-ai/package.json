@@ -1,0 +1,92 @@
+{
+  "name": "rafeeq-ai",
+  "version": "0.23.1",
+  "main": "expo-router/entry",
+  "dependencies": {
+    "@fugood/react-native-audio-pcm-stream": "1.1.4",
+    "@ronradtke/react-native-markdown-display": "^9.0.3",
+    "buffer": "^6.0.3",
+    "expo": "~58.0.22",
+    "expo-blur": "~58.0.5",
+    "expo-build-properties": "~58.0.12",
+    "expo-clipboard": "~58.0.4",
+    "expo-constants": "~58.0.14",
+    "expo-device": "~58.0.5",
+    "expo-document-picker": "~58.0.4",
+    "expo-file-system": "~58.0.13",
+    "expo-font": "~58.0.11",
+    "expo-haptics": "~58.0.7",
+    "expo-linear-gradient": "~58.0.3",
+    "expo-linking": "~58.0.15",
+    "expo-local-authentication": "~58.0.2",
+    "expo-localization": "~58.0.5",
+    "expo-location": "~58.0.20",
+    "expo-notifications": "~58.1.8",
+    "expo-print": "~58.0.8",
+    "expo-router": "~58.0.29",
+    "expo-sharing": "~58.0.22",
+    "expo-speech": "~58.0.3",
+    "expo-sqlite": "~58.0.15",
+    "expo-status-bar": "~58.0.4",
+    "expo-system-ui": "~58.0.7",
+    "i18next": "^26.7.1",
+    "llama.rn": "0.12.9",
+    "react": "19.3.0",
+    "react-i18next": "^17.1.11",
+    "react-native": "0.88.1",
+    "react-native-reanimated": "4.7.1",
+    "react-native-safe-area-context": "~5.10.1",
+    "react-native-screens": "~4.30.1",
+    "react-native-svg": "15.16.0",
+    "react-native-worklets": "0.13.0",
+    "whisper.rn": "0.7.4",
+    "zustand": "^5.0.16"
+  },
+  "devDependencies": {
+    "@react-native/jest-preset": "^0.88.1",
+    "@testing-library/react-native": "^14.1.0",
+    "@types/jest": "30.0.0",
+    "@types/react": "~19.3.0",
+    "@types/react-test-renderer": "^19.3.0",
+    "eslint": "^9.39.0",
+    "eslint-config-expo": "~58.0.4",
+    "jest": "~30.5.2",
+    "jest-expo": "~58.0.13",
+    "react-test-renderer": "^19.3.0",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "prebuild": "expo prebuild --platform android --clean",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "test": "jest --ci",
+    "check": "npm run typecheck && npm run lint && npm run test"
+  },
+  "overrides": {
+    "minimatch@>=7.0.0 <11.0.1": "11.0.1",
+    "glob@>=9.0.0 <14.0.2": "14.0.2",
+    "deepmerge@>=4.2.0 <=4.3.1": "4.1.1"
+  },
+  "private": true,
+  "description": "Rafeeq AI — private on-device AI assistant by DRS AI",
+  "license": "UNLICENSED",
+  "jest": {
+    "preset": "jest-expo",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/android/",
+      "/ios/"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|standard-navigation|@ronradtke/react-native-markdown-display))"
+    ],
+    "setupFiles": [
+      "./jest.setup.ts"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.test.[jt]s?(x)"
+    ]
+  }
+}

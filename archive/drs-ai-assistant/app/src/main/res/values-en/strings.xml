@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">DRS AI</string>
+
+    <!-- Actions -->
+    <string name="action_new_chat">New chat</string>
+    <string name="action_history">Chats</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_send">Send</string>
+    <string name="action_stop">Stop</string>
+    <string name="action_ok">OK</string>
+    <string name="action_retry">Try again</string>
+    <string name="action_back">Back</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_cancel">Cancel</string>
+
+    <!-- Chat -->
+    <string name="chat_greeting">Hi! I\'m DRS</string>
+    <string name="chat_greeting_sub">Your AI assistant, running offline on your phone. What shall we do today?</string>
+    <string name="chat_hint">Type a message…</string>
+    <string name="chat_loading_model">Preparing the model…</string>
+    <string name="suggestion_1">Help me write a formal message</string>
+    <string name="suggestion_2">Summarize a simple idea for me</string>
+    <string name="suggestion_3">Suggest a plan for my day</string>
+
+    <!-- Errors -->
+    <string name="error_title">Something went wrong</string>
+    <string name="error_storage">Not enough storage. You need about %1$s free.</string>
+    <string name="error_network">Couldn\'t connect. Check your internet and try again.</string>
+    <string name="error_checksum">The downloaded file is corrupted. It will be downloaded again.</string>
+    <string name="error_unknown">An unexpected error occurred.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Welcome to DRS</string>
+    <string name="onboarding_body">To run the assistant offline on your phone, we need to download the model once.</string>
+    <string name="onboarding_privacy">Your chats stay on your phone and never leave it.</string>
+    <string name="onboarding_model_label">Model</string>
+    <string name="onboarding_model_size">Size: %1$s</string>
+    <string name="onboarding_model_license">License: %1$s</string>
+    <string name="onboarding_free_space">Free space: %1$s</string>
+    <string name="onboarding_download">Start download</string>
+    <string name="onboarding_progress">%1$s of %2$s (%3$d%%)</string>
+    <string name="onboarding_pause">Pause</string>
+    <string name="onboarding_keep_open">Keep the app open and use Wi-Fi while downloading.</string>
+    <string name="onboarding_paused">Paused: %1$s of %2$s</string>
+    <string name="onboarding_resume">Resume download</string>
+    <string name="onboarding_verifying">Verifying the file…</string>
+    <string name="onboarding_done">Ready! Let\'s start</string>
+
+    <!-- History -->
+    <string name="history_title">Chats</string>
+    <string name="history_empty">No chats yet</string>
+    <string name="history_empty_sub">Start a new chat and it will show up here.</string>
+    <string name="history_untitled">Untitled chat</string>
+    <string name="history_delete_title">Delete chat?</string>
+    <string name="history_delete_body">\"%1$s\" will be deleted permanently. This can\'t be undone.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_temperature">Creativity (temperature)</string>
+    <string name="settings_temperature_value">Value: %1$s</string>
+    <string name="settings_temperature_hint">Lower = more precise, consistent replies. Higher = more varied replies.</string>
+    <string name="settings_context">Memory length (context)</string>
+    <string name="settings_context_tokens">%1$d</string>
+    <string name="settings_context_hint">A longer context remembers more of the chat but uses more memory and may be slower.</string>
+    <string name="settings_model">Model</string>
+    <string name="settings_delete_model">Delete model</string>
+    <string name="settings_delete_model_title">Delete model?</string>
+    <string name="settings_delete_model_body">This frees about %1$s. You\'ll need to download it again to use this model. Your chats won\'t be deleted.</string>
+    <string name="settings_about">About</string>
+    <string name="settings_about_body">DRS is an AI assistant that runs entirely on your device. It never sends your chats to a server.</string>
+    <string name="settings_licenses">Open-source licenses</string>
+    <string name="license_llama_cpp">llama.cpp — MIT License\nCopyright © the ggml / llama.cpp authors</string>
+    <string name="license_qwen">Qwen2.5-1.5B-Instruct — Apache License 2.0\nCopyright © Qwen Team, Alibaba Cloud</string>
+
+    <!-- Models (v0.2) -->
+    <string name="onboarding_choose_model">Choose a model</string>
+    <string name="model_recommended">Recommended for Arabic</string>
+    <string name="model_jais_desc">Arabic model by Inception; smaller download and faster on phones. Thinks before it answers.</string>
+    <string name="model_qwen_desc">General multilingual model; larger download.</string>
+    <string name="settings_model_in_use">In use</string>
+    <string name="settings_model_downloaded">Downloaded</string>
+    <string name="settings_model_not_downloaded">Not downloaded</string>
+    <string name="settings_model_use">Use</string>
+    <string name="settings_model_download">Download</string>
+    <string name="chat_thinking">Thinking…</string>
+    <string name="chat_reasoning_show">Show reasoning</string>
+    <string name="chat_reasoning_hide">Hide reasoning</string>
+    <string name="license_jais">Jais-3-0.9B — Apache License 2.0
+Copyright © Inception / IFM</string>
+    <!-- Voice (v0.3) -->
+    <string name="settings_voice">Voice</string>
+    <string name="voice_name">Saudi voice (Nabra Saudi 7M)</string>
+    <string name="voice_desc">Reads DRS replies aloud in a Saudi Arabic voice, offline. Downloaded once.</string>
+    <string name="voice_ready">Ready on this device</string>
+    <string name="voice_try">Try the voice</string>
+    <string name="voice_sample_text">هلا والله! أنا درس، مساعدك الذكي. وش تبي نسوي اليوم؟</string>
+    <string name="voice_auto_read">Read replies aloud</string>
+    <string name="voice_auto_read_hint">Speaks each sentence as soon as it is written.</string>
+    <string name="voice_speed_value">Speech rate: %1$s</string>
+    <string name="voice_delete_title">Delete the voice?</string>
+    <string name="voice_delete_body">This frees about %1$s. You can download it again in Settings.</string>
+    <string name="voice_missing_title">Voice not downloaded</string>
+    <string name="voice_missing_body">To hear replies, download the Saudi voice in Settings (about 16 MB).</string>
+    <string name="voice_open_settings">Open Settings</string>
+    <string name="action_auto_read_on">Turn on reading aloud</string>
+    <string name="action_auto_read_off">Turn off reading aloud</string>
+    <string name="action_read_aloud">Read aloud</string>
+    <string name="action_stop_reading">Stop reading</string>
+    <string name="settings_version">Version %1$s</string>
+
+    <!-- Licenses -->
+    <string name="licenses_title">Licenses</string>
+    <string name="licenses_app_body">DRS is free and open-source software under the GNU GPL version 3 or later. You may use, modify and redistribute it under the same license. It comes with no warranty.</string>
+    <string name="licenses_third_party">Third-party components</string>
+    <string name="licenses_models_note">Language and voice models are not bundled in the app; they are downloaded on request and verified by SHA-256.</string>
+</resources>
